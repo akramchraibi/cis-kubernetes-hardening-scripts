@@ -1,0 +1,1877 @@
+[
+  {
+    "controlindex": "1.1.1",
+    "controlname": "Ensure that the API server pod specification file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The API server pod specification file controls various parameters that set the behavior of the API server. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/manifests/kube-apiserver.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/manifests/kube-apiserver.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.2",
+    "controlname": "Ensure that the API server pod specification file ownership is set to root:root",
+    "controldescriptionandrationale": "The API server pod specification file controls various parameters that set the behavior of the API server. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/manifests/kube-apiserver.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/manifests/kube-apiserver.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.3",
+    "controlname": "Ensure that the controller manager pod specification file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The controller manager pod specification file controls various parameters that set the behavior of the Controller Manager on the master node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/manifests/kube-controller-manager.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/manifests/kube-controller-manager.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.4",
+    "controlname": "Ensure that the controller manager pod specification file ownership is set to root:root",
+    "controldescriptionandrationale": "The controller manager pod specification file controls various parameters that set the behavior of various components of the master node. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/manifests/kube-controller-manager.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/manifests/kube-controller-manager.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.5",
+    "controlname": "Ensure that the scheduler pod specification file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The scheduler pod specification file controls various parameters that set the behavior of the Scheduler service in the master node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/manifests/kube-scheduler.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/manifests/kube-scheduler.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.6",
+    "controlname": "Ensure that the scheduler pod specification file ownership is set to root:root",
+    "controldescriptionandrationale": "The scheduler pod specification file controls various parameters that set the behavior of the kube-scheduler service in the master node. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/manifests/kube-scheduler.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/manifests/kube-scheduler.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.7",
+    "controlname": "Ensure that the etcd pod specification file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The etcd pod specification file controls various parameters that set the behavior of the etcd service in the master node. etcd is a highly-available key-value store which Kubernetes uses for persistent storage of all of its REST API object. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/manifests/etcd.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/manifests/etcd.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.8",
+    "controlname": "Ensure that the etcd pod specification file ownership is set to root:root",
+    "controldescriptionandrationale": "The etcd pod specification file controls various parameters that set the behavior of the etcd service in the master node. etcd is a highly-available key-value store which Kubernetes uses for persistent storage of all of its REST API object. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/manifests/etcd.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/manifests/etcd.yaml"
+    }
+  },
+  {
+    "controlindex": "1.1.9",
+    "controlname": "Ensure that the Container Network Interface file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "Container Network Interface provides various networking options for overlay networking. You should consult their documentation and restrict their respective file permissions to maintain the integrity of those files. Those files should be writable by only the administrators on the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a <path/to/cni/files>",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 <path/to/cni/files>"
+    }
+  },
+  {
+    "controlindex": "1.1.10",
+    "controlname": "Ensure that the Container Network Interface file ownership is set to root:root",
+    "controldescriptionandrationale": "Container Network Interface provides various networking options for overlay networking. You should consult their documentation and restrict their respective file permissions to maintain the integrity of those files. Those files should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G <path/to/cni/files>",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root <path/to/cni/files>"
+    }
+  },
+  {
+    "controlindex": "1.1.11",
+    "controlname": "Ensure that the etcd data directory permissions are set to 700 or more restrictive",
+    "controldescriptionandrationale": "etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. This data directory should be protected from any unauthorized reads or writes. It should not be readable or writable by any group members or the world.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %a /var/lib/etcd",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 700 or more restrictive. The command shows the directory permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 700 /var/lib/etcd"
+    }
+  },
+  {
+    "controlindex": "1.1.12",
+    "controlname": "Ensure that the etcd data directory ownership is set to etcd:etcd",
+    "controldescriptionandrationale": "etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. This data directory should be protected from any unauthorized reads or writes. It should be owned by etcd:etcd.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %U:%G /var/lib/etcd",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to etcd:etcd. The command shows the directory owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown etcd:etcd /var/lib/etcd"
+    }
+  },
+  {
+    "controlindex": "1.1.13",
+    "controlname": "Ensure that the default administrative credential file permissions are set to 600",
+    "controldescriptionandrationale": "As part of initial cluster setup, default kubeconfig files are created to be used by the administrator of the cluster. These files contain private keys and certificates which allow for privileged access to the cluster. You should restrict their file permissions to maintain the integrity and confidentiality of the file(s). The file(s) should be readable and writable by only the administrators on the system.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/admin.conf\nstat -c %a /etc/kubernetes/super-admin.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive for both files. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/admin.conf\nchmod 600 /etc/kubernetes/super-admin.conf"
+    }
+  },
+  {
+    "controlindex": "1.1.14",
+    "controlname": "Ensure that the default administrative credential file ownership is set to root:root",
+    "controldescriptionandrationale": "As part of initial cluster setup, default kubeconfig files are created to be used by the administrator of the cluster. These files contain private keys and certificates which allow for privileged access to the cluster. You should set their file ownership to maintain the integrity and confidentiality of the file. The file(s) should be owned by root:root.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/admin.conf\nstat -c %U:%G /etc/kubernetes/super-admin.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root for both files. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/admin.conf\nchown root:root /etc/kubernetes/super-admin.conf"
+    }
+  },
+  {
+    "controlindex": "1.1.15",
+    "controlname": "Ensure that the scheduler.conf file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The scheduler.conf file is the kubeconfig file for the Scheduler. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/scheduler.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/scheduler.conf"
+    }
+  },
+  {
+    "controlindex": "1.1.16",
+    "controlname": "Ensure that the scheduler.conf file ownership is set to root:root",
+    "controldescriptionandrationale": "The scheduler.conf file is the kubeconfig file for the Scheduler. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/scheduler.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/scheduler.conf"
+    }
+  },
+  {
+    "controlindex": "1.1.17",
+    "controlname": "Ensure that the controller-manager.conf file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The controller-manager.conf file is the kubeconfig file for the Controller Manager. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/controller-manager.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/controller-manager.conf"
+    }
+  },
+  {
+    "controlindex": "1.1.18",
+    "controlname": "Ensure that the controller-manager.conf file ownership is set to root:root",
+    "controldescriptionandrationale": "The controller-manager.conf file is the kubeconfig file for the Controller Manager. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/controller-manager.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/controller-manager.conf"
+    }
+  },
+  {
+    "controlindex": "1.1.19",
+    "controlname": "Ensure that the Kubernetes PKI directory and file ownership is set to root:root",
+    "controldescriptionandrationale": "Kubernetes makes use of a number of certificates as part of its operation. You should set the ownership of the directory containing the PKI information and all files in that directory to maintain their integrity. The directory and files should be owned by root:root.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ls -laR /etc/kubernetes/pki/",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership of all files and directories in this hierarchy is set to root:root. The command shows detailed directory listing including ownership.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown -R root:root /etc/kubernetes/pki/"
+    }
+  },
+  {
+    "controlindex": "1.1.20",
+    "controlname": "Ensure that the Kubernetes PKI certificate file permissions are set to 644 or more restrictive",
+    "controldescriptionandrationale": "Kubernetes makes use of a number of certificate files as part of the operation of its components. The permissions on these files should be set to 644 or more restrictive to protect their integrity and confidentiality.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c '%a' /etc/kubernetes/pki/*.crt",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 644 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod -R 644 /etc/kubernetes/pki/*.crt"
+    }
+  },
+  {
+    "controlindex": "1.1.21",
+    "controlname": "Ensure that the Kubernetes PKI key file permissions are set to 600",
+    "controldescriptionandrationale": "Kubernetes makes use of a number of key files as part of the operation of its components. The permissions on these files should be set to 600 to protect their integrity and confidentiality.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c '%a' /etc/kubernetes/pki/*.key",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod -R 600 /etc/kubernetes/pki/*.key"
+    }
+  },
+  {
+    "controlindex": "1.2.1",
+    "controlname": "Ensure that the --anonymous-auth argument is set to false",
+    "controldescriptionandrationale": "When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep anonymous-auth",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --anonymous-auth argument is set to false. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --anonymous-auth=false"
+    }
+  },
+  {
+    "controlindex": "1.2.2",
+    "controlname": "Ensure that the --token-auth-file parameter is not set",
+    "controldescriptionandrationale": "The token-based authentication utilizes static tokens to authenticate requests to the apiserver. The tokens are stored in clear-text in a file on the apiserver, and cannot be revoked or rotated without restarting the apiserver. Hence, do not use static token-based authentication.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep token-auth-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --token-auth-file argument is not present. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and remove any --token-auth-file parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.3",
+    "controlname": "Ensure that the DenyServiceExternalIPs is set",
+    "controldescriptionandrationale": "This admission controller rejects all net-new usage of the Service field externalIPs. Most users do not need the ability to set the externalIPs field for a Service at all, and cluster admins should consider disabling this functionality by enabling the DenyServiceExternalIPs admission controller.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep enable-admission-plugins",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the 'DenyServiceExternalIPs' argument exists as a string value in --enable-admission-plugins. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add DenyServiceExternalIPs to --enable-admission-plugins parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.4",
+    "controlname": "Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate",
+    "controldescriptionandrationale": "The apiserver, by default, does not authenticate itself to the kubelet's HTTPS endpoints. The requests from the apiserver are treated anonymously. You should set up certificate-based kubelet authentication to ensure that the apiserver authenticates itself to kubelets when submitting requests.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep kubelet-client-certificate\nps -ef | grep kube-apiserver | grep -v grep | grep kubelet-client-key",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that both --kubelet-client-certificate and --kubelet-client-key arguments exist and are set to appropriate certificate and key files. The commands show the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --kubelet-client-certificate=<path/to/client-certificate-file>\n- --kubelet-client-key=<path/to/client-key-file>"
+    }
+  },
+  {
+    "controlindex": "1.2.5",
+    "controlname": "Ensure that the --kubelet-certificate-authority argument is set as appropriate",
+    "controldescriptionandrationale": "The connections from the apiserver to the kubelet are used for fetching logs for pods, attaching (through kubectl) to running pods, and using the kubelet's port-forwarding functionality. These connections terminate at the kubelet's HTTPS endpoint. By default, the apiserver does not verify the kubelet's serving certificate, which makes the connection subject to man-in-the-middle attacks, and unsafe to run over untrusted and/or public networks.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep kubelet-certificate-authority",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --kubelet-certificate-authority argument exists and is set to a certificate bundle file containing the root certificate for the kubelet's serving certificate. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --kubelet-certificate-authority=<path/to/ca-file>"
+    }
+  },
+  {
+    "controlindex": "1.2.6",
+    "controlname": "Ensure that the --authorization-mode argument is not set to AlwaysAllow",
+    "controldescriptionandrationale": "The API Server, can be configured to allow all requests. This mode should not be used on any production cluster.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep authorization-mode",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --authorization-mode argument exists and is not set to AlwaysAllow. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and set --authorization-mode to a value other than AlwaysAllow, for example:\n- --authorization-mode=Node,RBAC"
+    }
+  },
+  {
+    "controlindex": "1.2.7",
+    "controlname": "Ensure that the --authorization-mode argument includes Node",
+    "controldescriptionandrationale": "The Node authorization mode only allows kubelets to read Secret, ConfigMap, PersistentVolume, and PersistentVolumeClaim objects associated with their nodes.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep authorization-mode",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --authorization-mode argument exists and is set to a value that includes Node. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add Node to --authorization-mode parameter, for example:\n- --authorization-mode=Node,RBAC"
+    }
+  },
+  {
+    "controlindex": "1.2.8",
+    "controlname": "Ensure that the --authorization-mode argument includes RBAC",
+    "controldescriptionandrationale": "Role Based Access Control (RBAC) allows fine-grained control over the operations that different entities can perform on different objects in the cluster. It is recommended to use the RBAC authorization mode.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep authorization-mode",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --authorization-mode argument exists and is set to a value that includes RBAC. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add RBAC to --authorization-mode parameter, for example:\n- --authorization-mode=Node,RBAC"
+    }
+  },
+  {
+    "controlindex": "1.2.9",
+    "controlname": "Ensure that the admission control plugin EventRateLimit is set",
+    "controldescriptionandrationale": "Using EventRateLimit admission control enforces a limit on the number of events that the API Server will accept in a given time slice. A misbehaving workload could overwhelm and DoS the API Server, making it unavailable.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep enable-admission-plugins",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --enable-admission-plugins argument is set to a value that includes EventRateLimit. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add EventRateLimit to --enable-admission-plugins parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.10",
+    "controlname": "Ensure that the admission control plugin AlwaysAdmit is not set",
+    "controldescriptionandrationale": "Setting admission control policy to AlwaysAdmit allows all requests and do not filter any requests. The AlwaysAdmit admission controller was deprecated in Kubernetes v1.13.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep enable-admission-plugins",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that if the --enable-admission-plugins argument is set, its value does not include AlwaysAdmit. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and remove AlwaysAdmit from --enable-admission-plugins parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.11",
+    "controlname": "Ensure that the admission control plugin AlwaysPullImages is set",
+    "controldescriptionandrationale": "Setting admission control policy to AlwaysPullImages forces every new pod to pull the required images every time. In a multi-tenant cluster users can be assured that their private images can only be used by those who have the credentials to pull them.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep enable-admission-plugins",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --enable-admission-plugins argument is set to a value that includes AlwaysPullImages. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add AlwaysPullImages to --enable-admission-plugins parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.12",
+    "controlname": "Ensure that the admission control plugin ServiceAccount is set",
+    "controldescriptionandrationale": "The controller manager creates a service account per controller in the kube-system namespace, generates a credential for it, and builds a dedicated API client with that service account credential for each controller loop to use.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep disable-admission-plugins",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --disable-admission-plugins argument is set to a value that does not include ServiceAccount. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and ensure ServiceAccount is not in --disable-admission-plugins parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.13",
+    "controlname": "Ensure that the admission control plugin NamespaceLifecycle is set",
+    "controldescriptionandrationale": "Setting admission control policy to NamespaceLifecycle ensures that objects cannot be created in non-existent namespaces, and that namespaces undergoing termination are not used for creating the new objects.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep disable-admission-plugins",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --disable-admission-plugins argument is set to a value that does not include NamespaceLifecycle. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and ensure NamespaceLifecycle is not in --disable-admission-plugins parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.14",
+    "controlname": "Ensure that the admission control plugin NodeRestriction is set",
+    "controldescriptionandrationale": "Using the NodeRestriction plug-in ensures that the kubelet is restricted to the Node and Pod objects that it could modify as defined. Such kubelets will only be allowed to modify their own Node API object, and only modify Pod API objects that are bound to their node.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep enable-admission-plugins",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --enable-admission-plugins argument is set to a value that includes NodeRestriction. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add NodeRestriction to --enable-admission-plugins parameter"
+    }
+  },
+  {
+    "controlindex": "1.2.15",
+    "controlname": "Ensure that the --profiling argument is set to false",
+    "controldescriptionandrationale": "Profiling allows for the identification of specific performance bottlenecks. It generates a significant amount of program data that could potentially be exploited to uncover system and program details. If you are not experiencing any bottlenecks and do not need the profiler for troubleshooting purposes, it is recommended to turn it off to reduce the potential attack surface.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep profiling",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --profiling argument is set to false. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and set:\n- --profiling=false"
+    }
+  },
+  {
+    "controlindex": "1.2.16",
+    "controlname": "Ensure that the --audit-log-path argument is set",
+    "controldescriptionandrationale": "Auditing the Kubernetes API Server provides a security-relevant chronological set of records documenting the sequence of activities that have affected system by individual users, administrators or other components of the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep audit-log-path",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --audit-log-path argument is set to a suitable path and file. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --audit-log-path=/var/log/apiserver/audit.log"
+    }
+  },
+  {
+    "controlindex": "1.2.17",
+    "controlname": "Ensure that the --audit-log-maxage argument is set to 30 or as appropriate",
+    "controldescriptionandrationale": "Retaining logs for at least 30 days ensures that you can go back in time and investigate or correlate any events. Set your audit log retention period to 30 days or as per your business requirements.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep audit-log-maxage",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --audit-log-maxage argument is set to 30 or as appropriate. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --audit-log-maxage=30"
+    }
+  },
+  {
+    "controlindex": "1.2.18",
+    "controlname": "Ensure that the --audit-log-maxbackup argument is set to 10 or as appropriate",
+    "controldescriptionandrationale": "Kubernetes automatically rotates the log files. Retaining old log files ensures that you would have sufficient log data available for carrying out any investigation or correlation.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep audit-log-maxbackup",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --audit-log-maxbackup argument is set to 10 or as appropriate. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --audit-log-maxbackup=10"
+    }
+  },
+  {
+    "controlindex": "1.2.19",
+    "controlname": "Ensure that the --audit-log-maxsize argument is set to 100 or as appropriate",
+    "controldescriptionandrationale": "Kubernetes automatically rotates the log files. Retaining old log files ensures that you would have sufficient log data available for carrying out any investigation or correlation.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep audit-log-maxsize",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --audit-log-maxsize argument is set to 100 or as appropriate. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --audit-log-maxsize=100"
+    }
+  },
+  {
+    "controlindex": "1.2.20",
+    "controlname": "Ensure that the --request-timeout argument is set as appropriate",
+    "controldescriptionandrationale": "Setting global request timeout allows extending the API server request timeout limit to a duration appropriate to the user's connection speed.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep request-timeout",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --request-timeout argument is either not set or set to an appropriate value. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and set:\n- --request-timeout=300s"
+    }
+  },
+  {
+    "controlindex": "1.2.21",
+    "controlname": "Ensure that the --service-account-lookup argument is set to true",
+    "controldescriptionandrationale": "If --service-account-lookup is not enabled, the apiserver only verifies that the authentication token is valid, and does not validate that the service account token mentioned in the request is actually present in etcd.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep service-account-lookup",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that if the --service-account-lookup argument exists it is set to true. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and set:\n- --service-account-lookup=true"
+    }
+  },
+  {
+    "controlindex": "1.2.22",
+    "controlname": "Ensure that the --service-account-key-file argument is set as appropriate",
+    "controldescriptionandrationale": "By default, if no --service-account-key-file is specified to the apiserver, it uses the private key from the TLS serving certificate to verify service account tokens. To ensure that the keys for service account tokens could be rotated as needed, a separate public/private key pair should be used for signing service account tokens.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep service-account-key-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --service-account-key-file argument exists and is set as appropriate. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --service-account-key-file=<path/to/key-file>"
+    }
+  },
+  {
+    "controlindex": "1.2.23",
+    "controlname": "Ensure that the --etcd-certfile and --etcd-keyfile arguments are set as appropriate",
+    "controldescriptionandrationale": "etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be protected by client authentication.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep etcd-certfile\nps -ef | grep kube-apiserver | grep -v grep | grep etcd-keyfile",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that both --etcd-certfile and --etcd-keyfile arguments exist and are set to appropriate certificate and key files. The commands show the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --etcd-certfile=<path/to/client-certificate-file>\n- --etcd-keyfile=<path/to/client-key-file>"
+    }
+  },
+  {
+    "controlindex": "1.2.24",
+    "controlname": "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate",
+    "controldescriptionandrationale": "API server communication contains sensitive parameters that should remain encrypted in transit. Configure the API server to serve only HTTPS traffic.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep tls-cert-file\nps -ef | grep kube-apiserver | grep -v grep | grep tls-private-key-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that both --tls-cert-file and --tls-private-key-file arguments exist and are set to appropriate certificate and key files. The commands show the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --tls-cert-file=<path/to/tls-certificate-file>\n- --tls-private-key-file=<path/to/tls-key-file>"
+    }
+  },
+  {
+    "controlindex": "1.2.25",
+    "controlname": "Ensure that the --client-ca-file argument is set as appropriate",
+    "controldescriptionandrationale": "API server communication contains sensitive parameters that should remain encrypted in transit. Configure the API server to serve only HTTPS traffic. If --client-ca-file argument is set, any request presenting a client certificate signed by one of the authorities in the client-ca-file is authenticated with an identity corresponding to the CommonName of the client certificate.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep client-ca-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --client-ca-file argument exists and is set as appropriate. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --client-ca-file=<path/to/client-ca-file>"
+    }
+  },
+  {
+    "controlindex": "1.2.26",
+    "controlname": "Ensure that the --etcd-cafile argument is set as appropriate",
+    "controldescriptionandrationale": "etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be protected by client authentication. This requires the API server to identify itself to the etcd server using a SSL Certificate Authority file.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep etcd-cafile",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --etcd-cafile argument exists and is set as appropriate. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --etcd-cafile=<path/to/ca-file>"
+    }
+  },
+  {
+    "controlindex": "1.2.27",
+    "controlname": "Ensure that the --encryption-provider-config argument is set as appropriate",
+    "controldescriptionandrationale": "etcd is a highly available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted at rest to avoid any disclosures.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep encryption-provider-config",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --encryption-provider-config argument is set to a EncryptionConfig file. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --encryption-provider-config=<path/to/EncryptionConfig/File>"
+    }
+  },
+  {
+    "controlindex": "1.2.28",
+    "controlname": "Ensure that encryption providers are appropriately configured",
+    "controldescriptionandrationale": "Where etcd encryption is used, it is important to ensure that the appropriate set of encryption providers is used. Currently, the aescbc, kms, and secretbox are likely to be appropriate options.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep encryption-provider-config",
+      "description_of_what_the_command_does_and_its_expected_output": "Get the EncryptionConfig file set for --encryption-provider-config argument. Verify that aescbc, kms, or secretbox is set as the encryption provider for all the desired resources. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Create an EncryptionConfig file with aescbc, kms, or secretbox as the encryption provider and reference it with --encryption-provider-config"
+    }
+  },
+  {
+    "controlindex": "1.2.29",
+    "controlname": "Ensure that the API Server only makes use of Strong Cryptographic Ciphers",
+    "controldescriptionandrationale": "TLS ciphers have had a number of known vulnerabilities and weaknesses, which can reduce the protection provided by them. By default Kubernetes supports a number of TLS cipher suites including some that have security concerns, weakening the protection provided.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep tls-cipher-suites",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --tls-cipher-suites argument is set to a strong cipher suite list. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and add:\n- --tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"
+    }
+  },
+  {
+    "controlindex": "1.2.30",
+    "controlname": "Ensure that the --service-account-extend-token-expiration parameter is set to false",
+    "controldescriptionandrationale": "By default Kubernetes extends service account token lifetimes to one year to aid in transition from the legacy token settings. This default setting is not ideal for security as it ignores other settings related to maximum token lifetime and means that a lost or stolen credential could be valid for an extended period of time.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-apiserver | grep -v grep | grep service-account-extend-token-expiration",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --service-account-extend-token-expiration argument is set to false. The command shows the API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-apiserver.yaml and set:\n- --service-account-extend-token-expiration=false"
+    }
+  },
+  {
+    "controlindex": "1.3.1",
+    "controlname": "Ensure that the --terminated-pod-gc-threshold argument is set as appropriate",
+    "controldescriptionandrationale": "Garbage collection is important to ensure sufficient resource availability and avoiding degraded performance and availability. In the worst case, the system might crash or just be unusable for a long period of time.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-controller-manager | grep -v grep | grep terminated-pod-gc-threshold",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --terminated-pod-gc-threshold argument is set as appropriate. The command shows the controller manager process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-controller-manager.yaml and set:\n- --terminated-pod-gc-threshold=10"
+    }
+  },
+  {
+    "controlindex": "1.3.2",
+    "controlname": "Ensure that the --profiling argument is set to false",
+    "controldescriptionandrationale": "Profiling allows for the identification of specific performance bottlenecks. It generates a significant amount of program data that could potentially be exploited to uncover system and program details. If you are not experiencing any bottlenecks and do not need the profiler for troubleshooting purposes, it is recommended to turn it off to reduce the potential attack surface.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-controller-manager | grep -v grep | grep profiling",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --profiling argument is set to false. The command shows the controller manager process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-controller-manager.yaml and set:\n- --profiling=false"
+    }
+  },
+  {
+    "controlindex": "1.3.3",
+    "controlname": "Ensure that the --use-service-account-credentials argument is set to true",
+    "controldescriptionandrationale": "The controller manager creates a service account per controller in the kube-system namespace, generates a credential for it, and builds a dedicated API client with that service account credential for each controller loop to use. Setting the --use-service-account-credentials to true runs each control loop within the controller manager using a separate service account credential.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-controller-manager | grep -v grep | grep use-service-account-credentials",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --use-service-account-credentials argument is set to true. The command shows the controller manager process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-controller-manager.yaml and set:\n- --use-service-account-credentials=true"
+    }
+  },
+  {
+    "controlindex": "1.3.4",
+    "controlname": "Ensure that the --service-account-private-key-file argument is set as appropriate",
+    "controldescriptionandrationale": "To ensure that keys for service account tokens can be rotated as needed, a separate public/private key pair should be used for signing service account tokens. The private key should be specified to the controller manager with --service-account-private-key-file as appropriate.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-controller-manager | grep -v grep | grep service-account-private-key-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --service-account-private-key-file argument is set as appropriate. The command shows the controller manager process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-controller-manager.yaml and add:\n- --service-account-private-key-file=<path/to/key-file>"
+    }
+  },
+  {
+    "controlindex": "1.3.5",
+    "controlname": "Ensure that the --root-ca-file argument is set as appropriate",
+    "controldescriptionandrationale": "Processes running within pods that need to contact the API server must verify the API server's serving certificate. Failing to do so could be a subject to man-in-the-middle attacks.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-controller-manager | grep -v grep | grep root-ca-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --root-ca-file argument exists and is set to a certificate bundle file containing the root certificate for the API server's serving certificate. The command shows the controller manager process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-controller-manager.yaml and add:\n- --root-ca-file=<path/to/file>"
+    }
+  },
+  {
+    "controlindex": "1.3.6",
+    "controlname": "Ensure that the RotateKubeletServerCertificate argument is set to true",
+    "controldescriptionandrationale": "RotateKubeletServerCertificate causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire. This automated periodic rotation ensures that the there are no downtimes due to expired certificates and thus addressing availability in the CIA security triad.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-controller-manager | grep -v grep | grep feature-gates",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that RotateKubeletServerCertificate argument exists and is set to true. The command shows the controller manager process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-controller-manager.yaml and add:\n- --feature-gates=RotateKubeletServerCertificate=true"
+    }
+  },
+  {
+    "controlindex": "1.3.7",
+    "controlname": "Ensure that the --bind-address argument is set to 127.0.0.1",
+    "controldescriptionandrationale": "The Controller Manager API service which runs on port 10252/TCP by default is used for health and metrics information and is available without authentication or encryption. As such it should only be bound to a localhost interface, to minimize the cluster's attack surface.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-controller-manager | grep -v grep | grep bind-address",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --bind-address argument is set to 127.0.0.1. The command shows the controller manager process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-controller-manager.yaml and set:\n- --bind-address=127.0.0.1"
+    }
+  },
+  {
+    "controlindex": "1.4.1",
+    "controlname": "Ensure that the --profiling argument is set to false",
+    "controldescriptionandrationale": "Profiling allows for the identification of specific performance bottlenecks. It generates a significant amount of program data that could potentially be exploited to uncover system and program details. If you are not experiencing any bottlenecks and do not need the profiler for troubleshooting purposes, it is recommended to turn it off to reduce the potential attack surface.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-scheduler | grep -v grep | grep profiling",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --profiling argument is set to false. The command shows the scheduler process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-scheduler.yaml and set:\n- --profiling=false"
+    }
+  },
+  {
+    "controlindex": "1.4.2",
+    "controlname": "Ensure that the --bind-address argument is set to 127.0.0.1",
+    "controldescriptionandrationale": "The Scheduler API service which runs on port 10251/TCP by default is used for health and metrics information and is available without authentication or encryption. As such it should only be bound to a localhost interface, to minimize the cluster's attack surface.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kube-scheduler | grep -v grep | grep bind-address",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --bind-address argument is set to 127.0.0.1. The command shows the scheduler process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/kube-scheduler.yaml and set:\n- --bind-address=127.0.0.1"
+    }
+  },
+  {
+    "controlindex": "2.1",
+    "controlname": "Ensure that the --cert-file and --key-file arguments are set as appropriate",
+    "controldescriptionandrationale": "etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep etcd | grep -v grep | grep cert-file\nps -ef | grep etcd | grep -v grep | grep key-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that both --cert-file and --key-file arguments exist and are set to appropriate certificate and key files. The commands show the etcd process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/etcd.yaml and add:\n- --cert-file=<path/to/ca-file>\n- --key-file=<path/to/key-file>"
+    }
+  },
+  {
+    "controlindex": "2.2",
+    "controlname": "Ensure that the --client-cert-auth argument is set to true",
+    "controldescriptionandrationale": "etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should not be available to unauthenticated clients. You should enable the client authentication via valid certificates to secure the access to the etcd service.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep etcd | grep -v grep | grep client-cert-auth",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --client-cert-auth argument is set to true. The command shows the etcd process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/etcd.yaml and set:\n- --client-cert-auth=true"
+    }
+  },
+  {
+    "controlindex": "2.3",
+    "controlname": "Ensure that the --auto-tls argument is not set to true",
+    "controldescriptionandrationale": "Do not use self-signed certificates for TLS. etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should not be available to unauthenticated clients.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep etcd | grep -v grep | grep auto-tls",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that if the --auto-tls argument exists, it is not set to true. The command shows the etcd process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/etcd.yaml and set:\n- --auto-tls=false"
+    }
+  },
+  {
+    "controlindex": "2.4",
+    "controlname": "Ensure that the --peer-cert-file and --peer-key-file arguments are set as appropriate",
+    "controldescriptionandrationale": "etcd should be configured to make use of TLS encryption for peer connections. etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit and also amongst peers in the etcd clusters.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep etcd | grep -v grep | grep peer-cert-file\nps -ef | grep etcd | grep -v grep | grep peer-key-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that both --peer-cert-file and --peer-key-file arguments exist and are set to appropriate certificate and key files. The commands show the etcd process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/etcd.yaml and add:\n- --peer-cert-file=<path/to/peer-cert-file>\n- --peer-key-file=<path/to/peer-key-file>"
+    }
+  },
+  {
+    "controlindex": "2.5",
+    "controlname": "Ensure that the --peer-client-cert-auth argument is set to true",
+    "controldescriptionandrationale": "etcd should be configured for peer authentication. etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep etcd | grep -v grep | grep peer-client-cert-auth",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --peer-client-cert-auth argument is set to true. The command shows the etcd process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/etcd.yaml and set:\n- --peer-client-cert-auth=true"
+    }
+  },
+  {
+    "controlindex": "2.6",
+    "controlname": "Ensure that the --peer-auto-tls argument is not set to true",
+    "controldescriptionandrationale": "Do not use automatically generated self-signed certificates for TLS connections between peers. etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep etcd | grep -v grep | grep peer-auto-tls",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that if the --peer-auto-tls argument exists, it is not set to true. The command shows the etcd process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/manifests/etcd.yaml and set:\n- --peer-auto-tls=false"
+    }
+  },
+  {
+    "controlindex": "2.7",
+    "controlname": "Ensure that a unique Certificate Authority is used for etcd",
+    "controldescriptionandrationale": "etcd is a highly available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. Its access should be restricted to specifically designated clients and peers only.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep etcd | grep -v grep | grep trusted-ca-file\nps -ef | grep apiserver | grep -v grep | grep client-ca-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the CA used by etcd (--trusted-ca-file) is different from the CA used by the API server (--client-ca-file). The commands show the etcd and API server process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Create a dedicated CA for etcd and configure it with:\n- --trusted-ca-file=<path/to/ca-file>"
+    }
+  },
+  {
+  "controlindex": "2.8",
+  "controlname": "Ensure that a unique Certificate Authority is used for etcd",
+  "controldescriptionandrationale": "etcd is a highly available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. Its access should be restricted to specifically designated clients and peers only. Authentication to etcd is based on whether the certificate presented was issued by a trusted certificate authority. There is no checking of certificate attributes such as common name or subject alternative name. As such, if any attackers were able to gain access to any certificate issued by the trusted certificate authority, they would be able to gain full access to the etcd database.",
+  "severityLevel": "high",
+  "Audit": {
+    "commands": "ps -ef | grep etcd\nps -ef | grep apiserver",
+    "description_of_what_the_command_does_and_its_expected_output": "Review the CA used by the etcd environment and ensure that it does not match the CA certificate file used for the management of the overall Kubernetes cluster. The first command shows the etcd trusted CA file, the second shows the API server's client CA file. They should reference different files.",
+    "validated": false
+  },
+  "remediation": {
+    "commands_to_fix_the_problem": "Follow the etcd documentation and create a dedicated certificate authority setup for the etcd service. Then, edit the etcd pod specification file /etc/kubernetes/manifests/etcd.yaml on the master node and set the parameter: --trusted-ca-file=<path/to/ca-file>"
+  }},
+  {
+    "controlindex": "3.1.1",
+    "controlname": "Client certificate authentication should not be used for users",
+    "controldescriptionandrationale": "Client certificates are a common authentication method for Kubernetes. However, they cannot be easily revoked or rotated without redistributing new certificates to all clients. It is recommended to use alternative authentication mechanisms that support revocation and rotation.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get users",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that no users are authenticated using client certificates. The command lists all users in the cluster.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Migrate users to alternative authentication methods such as OIDC, webhook tokens, or service accounts."
+    }
+  },
+  {
+    "controlindex": "3.1.2",
+    "controlname": "Service account token authentication should not be used for users",
+    "controldescriptionandrationale": "Service account tokens are meant for service-to-service authentication, not for human users. Using them for human users can lead to privilege escalation risks.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get users",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that no human users are authenticated using service account tokens. The command lists all users in the cluster.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Migrate human users to proper authentication methods such as OIDC or webhook tokens."
+    }
+  },
+  {
+    "controlindex": "3.1.3",
+    "controlname": "Bootstrap token authentication should not be used for users",
+    "controldescriptionandrationale": "Bootstrap tokens are meant for initial cluster setup and node joining, not for regular user authentication. They have limited security controls.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get secrets -n kube-system | grep bootstrap-token",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that bootstrap tokens are not being used for regular user authentication. The command lists bootstrap tokens in the kube-system namespace.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove any bootstrap tokens being used for user authentication and migrate users to proper authentication methods."
+    }
+  },
+  {
+    "controlindex": "3.2.1",
+    "controlname": "Ensure that a minimal audit policy is created",
+    "controldescriptionandrationale": "Audit logging enables the monitoring of all requests to the Kubernetes API server. Without proper audit logging, it would be difficult to investigate security incidents.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pod -n kube-system -l component=kube-apiserver -o jsonpath='{.items[0].spec.volumes[?(@.name==\"audit\")]}'",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that an audit policy file is mounted to the API server. The command checks for an audit volume mount.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Create an audit policy file and configure the API server to use it with --audit-policy-file parameter."
+    }
+  },
+  {
+    "controlindex": "3.2.2",
+    "controlname": "Ensure that the audit policy covers key security concerns",
+    "controldescriptionandrationale": "The audit policy should log security-sensitive requests to provide sufficient information for incident investigation.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pod -n kube-system -l component=kube-apiserver -o jsonpath='{.items[0].spec.containers[0].command}' | grep audit-policy-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify the audit policy file location and review its contents to ensure it covers key security concerns. The command shows the audit policy file path.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Update the audit policy file to include logging for security-sensitive requests."
+    }
+  },
+  {
+    "controlindex": "4.1.1",
+    "controlname": "Ensure that the kubelet service file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The kubelet service file controls the behavior of the kubelet service. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /etc/systemd/system/kubelet.service",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/systemd/system/kubelet.service"
+    }
+  },
+  {
+    "controlindex": "4.1.2",
+    "controlname": "Ensure that the kubelet service file ownership is set to root:root",
+    "controldescriptionandrationale": "The kubelet service file controls the behavior of the kubelet service. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/systemd/system/kubelet.service",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/systemd/system/kubelet.service"
+    }
+  },
+  {
+    "controlindex": "4.1.3",
+    "controlname": "If proxy kubeconfig file exists ensure permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The kubeconfig file for kube-proxy contains credentials for accessing the API server. You should restrict its file permissions to maintain the confidentiality of the credentials.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/proxy.kubeconfig",
+      "description_of_what_the_command_does_and_its_expected_output": "If the file exists, verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/proxy.kubeconfig"
+    }
+  },
+  {
+    "controlindex": "4.1.4",
+    "controlname": "If proxy kubeconfig file exists ensure ownership is set to root:root",
+    "controldescriptionandrationale": "The kubeconfig file for kube-proxy contains credentials for accessing the API server. You should set its file ownership to maintain the confidentiality of the credentials. The file should be owned by root:root.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/proxy.kubeconfig",
+      "description_of_what_the_command_does_and_its_expected_output": "If the file exists, verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/proxy.kubeconfig"
+    }
+  },
+  {
+    "controlindex": "4.1.5",
+    "controlname": "Ensure that the --kubeconfig kubelet.conf file permissions are set to 600 or more restrictive",
+    "controldescriptionandrationale": "The kubelet.conf file contains credentials for the kubelet to access the API server. You should restrict its file permissions to maintain the confidentiality of the credentials.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/kubelet.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /etc/kubernetes/kubelet.conf"
+    }
+  },
+  {
+    "controlindex": "4.1.6",
+    "controlname": "Ensure that the --kubeconfig kubelet.conf file ownership is set to root:root",
+    "controldescriptionandrationale": "The kubelet.conf file contains credentials for the kubelet to access the API server. You should set its file ownership to maintain the confidentiality of the credentials. The file should be owned by root:root.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/kubelet.conf",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/kubelet.conf"
+    }
+  },
+  {
+    "controlindex": "4.1.7",
+    "controlname": "Ensure that the certificate authorities file permissions are set to 644 or more restrictive",
+    "controldescriptionandrationale": "The certificate authorities file contains the root certificate for the cluster. You should restrict its file permissions to maintain the integrity of the file.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /etc/kubernetes/pki/ca.crt",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the permissions are 644 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 644 /etc/kubernetes/pki/ca.crt"
+    }
+  },
+  {
+    "controlindex": "4.1.8",
+    "controlname": "Ensure that the client certificate authorities file ownership is set to root:root",
+    "controldescriptionandrationale": "The certificate authorities file contains the root certificate for the cluster. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /etc/kubernetes/pki/ca.crt",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /etc/kubernetes/pki/ca.crt"
+    }
+  },
+  {
+    "controlindex": "4.1.9",
+    "controlname": "If the kubelet config.yaml configuration file is being used validate permissions set to 600 or more restrictive",
+    "controldescriptionandrationale": "The kubelet configuration file contains sensitive parameters that control the behavior of the kubelet. You should restrict its file permissions to maintain the integrity of the file.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %a /var/lib/kubelet/config.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "If the file exists, verify that the permissions are 600 or more restrictive. The command shows the file permissions in numeric format.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chmod 600 /var/lib/kubelet/config.yaml"
+    }
+  },
+  {
+    "controlindex": "4.1.10",
+    "controlname": "If the kubelet config.yaml configuration file is being used validate file ownership is set to root:root",
+    "controldescriptionandrationale": "The kubelet configuration file contains sensitive parameters that control the behavior of the kubelet. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "stat -c %U:%G /var/lib/kubelet/config.yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "If the file exists, verify that the ownership is set to root:root. The command shows the file owner and group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "chown root:root /var/lib/kubelet/config.yaml"
+    }
+  },
+  {
+    "controlindex": "4.2.1",
+    "controlname": "Ensure that the --anonymous-auth argument is set to false",
+    "controldescriptionandrationale": "When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. You should rely on authentication to authorize access and disallow anonymous requests.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep anonymous-auth",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --anonymous-auth argument is set to false. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and set:\n- --anonymous-auth=false"
+    }
+  },
+  {
+    "controlindex": "4.2.2",
+    "controlname": "Ensure that the --authorization-mode argument is not set to AlwaysAllow",
+    "controldescriptionandrationale": "The kubelet, can be configured to allow all requests. This mode should not be used on any production cluster.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep authorization-mode",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --authorization-mode argument exists and is not set to AlwaysAllow. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and set --authorization-mode to a value other than AlwaysAllow, for example:\n- --authorization-mode=Webhook"
+    }
+  },
+  {
+    "controlindex": "4.2.3",
+    "controlname": "Ensure that the --client-ca-file argument is set as appropriate",
+    "controldescriptionandrationale": "The connections to the kubelet are used for fetching logs for pods, attaching (through kubectl) to running pods, and using the kubelet's port-forwarding functionality. These connections terminate at the kubelet's HTTPS endpoint. You should enable the client authentication via valid certificates to secure the access to the kubelet.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep client-ca-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --client-ca-file argument exists and is set as appropriate. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and add:\n- --client-ca-file=<path/to/ca-file>"
+    }
+  },
+  {
+    "controlindex": "4.2.4",
+    "controlname": "Verify that if defined, readOnlyPort is set to 0",
+    "controldescriptionandrationale": "The read-only port provides no authentication or authorization controls. Disabling it reduces the attack surface of the kubelet.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep read-only-port",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that if the --read-only-port argument exists, it is set to 0. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and set:\n- --read-only-port=0"
+    }
+  },
+  {
+    "controlindex": "4.2.5",
+    "controlname": "Ensure that the --streaming-connection-idle-timeout argument is not set to 0",
+    "controldescriptionandrationale": "Setting idle timeouts ensures that resources are released if a connection is left open unintentionally. A value of 0 disables idle timeouts, which could lead to resource exhaustion.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep streaming-connection-idle-timeout",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that if the --streaming-connection-idle-timeout argument exists, it is not set to 0. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and set:\n- --streaming-connection-idle-timeout=5m (or other appropriate value)"
+    }
+  },
+  {
+    "controlindex": "4.2.6",
+    "controlname": "Ensure that the --make-iptables-util-chains argument is set to true",
+    "controldescriptionandrationale": "Kubelets can automatically manage the required iptables rules for services. Disabling this feature requires manual management of these rules, which is error-prone.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep make-iptables-util-chains",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --make-iptables-util-chains argument is set to true. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and set:\n- --make-iptables-util-chains=true"
+    }
+  },
+  {
+    "controlindex": "4.2.7",
+    "controlname": "Ensure that the --hostname-override argument is not set",
+    "controldescriptionandrationale": "Overriding the hostname could potentially break TLS setup between the kubelet and the API server, as certificates are often issued for specific hostnames.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep hostname-override",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --hostname-override argument is not present. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and remove any --hostname-override parameter"
+    }
+  },
+  {
+    "controlindex": "4.2.8",
+    "controlname": "Ensure that the eventRecordQPS argument is set to a level which ensures appropriate event capture",
+    "controldescriptionandrationale": "Events are an important source of information for monitoring and troubleshooting. Setting an appropriate event recording rate ensures sufficient event data is captured without overwhelming the system.",
+    "severityLevel": "low",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep event-record-qps",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --event-record-qps argument is set to an appropriate value (e.g., 5). The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and set:\n- --event-record-qps=5 (or other appropriate value)"
+    }
+  },
+  {
+    "controlindex": "4.2.9",
+    "controlname": "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate",
+    "controldescriptionandrationale": "Kubelet communication contains sensitive parameters that should remain encrypted in transit. Configure the kubelet to serve only HTTPS traffic.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep tls-cert-file\nps -ef | grep kubelet | grep -v grep | grep tls-private-key-file",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that both --tls-cert-file and --tls-private-key-file arguments exist and are set to appropriate certificate and key files. The commands show the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and add:\n- --tls-cert-file=<path/to/tls-certificate-file>\n- --tls-private-key-file=<path/to/tls-key-file>"
+    }
+  },
+  {
+    "controlindex": "4.2.10",
+    "controlname": "Ensure that the --rotate-certificates argument is not set to false",
+    "controldescriptionandrationale": "Certificate rotation ensures that certificates are refreshed before they expire, preventing service disruptions due to expired certificates.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep rotate-certificates",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that if the --rotate-certificates argument exists, it is not set to false. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and either remove --rotate-certificates or set it to true"
+    }
+  },
+  {
+    "controlindex": "4.2.11",
+    "controlname": "Verify that the RotateKubeletServerCertificate argument is set to true",
+    "controldescriptionandrationale": "RotateKubeletServerCertificate causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep feature-gates",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that RotateKubeletServerCertificate argument exists and is set to true. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and add:\n- --feature-gates=RotateKubeletServerCertificate=true"
+    }
+  },
+  {
+    "controlindex": "4.2.12",
+    "controlname": "Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers",
+    "controldescriptionandrationale": "TLS ciphers have had a number of known vulnerabilities and weaknesses, which can reduce the protection provided by them. By default Kubernetes supports a number of TLS cipher suites including some that have security concerns, weakening the protection provided.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep tls-cipher-suites",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --tls-cipher-suites argument is set to a strong cipher suite list. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and add:\n- --tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"
+    }
+  },
+  {
+    "controlindex": "4.2.13",
+    "controlname": "Ensure that a limit is set on pod PIDs",
+    "controldescriptionandrationale": "Setting a limit on the number of process IDs (PIDs) that a pod can consume prevents resource exhaustion attacks where a pod creates enough processes to starve the node of available PIDs.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep pod-max-pids",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --pod-max-pids argument is set to a reasonable limit (e.g., 100). The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and add:\n- --pod-max-pids=100 (or other appropriate limit)"
+    }
+  },
+  {
+    "controlindex": "4.2.14",
+    "controlname": "Ensure that the --seccomp-default parameter is set to true",
+    "controldescriptionandrationale": "Enabling seccomp by default applies secure computing mode filters to all pods unless specifically disabled, providing a strong security baseline.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep seccomp-default",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --seccomp-default argument is set to true. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and add:\n- --seccomp-default=true"
+    }
+  },
+  {
+    "controlindex": "4.2.15",
+    "controlname": "Ensure that the --IPAddressDeny is set to any",
+    "controldescriptionandrationale": "This setting helps prevent unauthorized access to the kubelet by denying all IP addresses by default, requiring explicit allow rules for permitted access.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kubelet | grep -v grep | grep IPAddressDeny",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --IPAddressDeny argument is set to 'any'. The command shows the kubelet process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit /etc/kubernetes/kubelet.conf and add:\n- --IPAddressDeny=any"
+    }
+  },
+  {
+    "controlindex": "4.3.1",
+    "controlname": "Ensure that the kube-proxy metrics service is bound to localhost",
+    "controldescriptionandrationale": "The kube-proxy metrics service provides sensitive information about the cluster. Binding it to localhost prevents unauthorized access from network sources.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "ps -ef | grep kube-proxy | grep -v grep | grep metrics-bind-address",
+      "description_of_what_the_command_does_and_its_expected_output": "Verify that the --metrics-bind-address argument is set to 127.0.0.1. The command shows the kube-proxy process arguments.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit the kube-proxy configuration and set:\n- --metrics-bind-address=127.0.0.1"
+    }
+  },
+  {
+    "controlindex": "5.1.1",
+    "controlname": "Ensure that the cluster-admin role is only used where required",
+    "controldescriptionandrationale": "The cluster-admin role provides unlimited permissions in the cluster. It should only be granted where absolutely necessary to minimize the risk of privilege escalation.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get clusterrolebindings -o wide | grep cluster-admin",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all clusterrolebindings to the cluster-admin role and verify they are necessary. The command lists all clusterrolebindings to the cluster-admin role.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary clusterrolebindings to the cluster-admin role using:\nkubectl delete clusterrolebinding <name>"
+    }
+  },
+  {
+    "controlindex": "5.1.2",
+    "controlname": "Minimize access to secrets",
+    "controldescriptionandrationale": "Secrets often contain sensitive information like credentials and keys. Access to secrets should be restricted to only those pods and users that absolutely need it.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get rolebindings,clusterrolebindings --all-namespaces -o wide | grep -E 'get|list|watch|create|update|patch|delete' secrets",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all rolebindings and clusterrolebindings that grant access to secrets and verify they are necessary. The command lists all bindings with access to secrets.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary access to secrets by editing or deleting the relevant rolebindings and clusterrolebindings."
+    }
+  },
+  {
+    "controlindex": "5.1.3",
+    "controlname": "Minimize wildcard use in Roles and ClusterRoles",
+    "controldescriptionandrationale": "Roles and ClusterRoles that use wildcards ('*') can grant excessive permissions. Permissions should be granted on a least-privilege basis.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get roles,clusterroles --all-namespaces -o yaml | grep '\"*\"'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all roles and clusterroles that use wildcards and verify they are necessary. The command searches for wildcards in role definitions.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Edit roles and clusterroles to replace wildcards with specific permissions."
+    }
+  },
+  {
+    "controlindex": "5.1.4",
+    "controlname": "Minimize access to create pods",
+    "controldescriptionandrationale": "The ability to create pods can be used to gain elevated privileges in the cluster. Access to create pods should be restricted.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get rolebindings,clusterrolebindings --all-namespaces -o wide | grep 'create pods'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all rolebindings and clusterrolebindings that grant permission to create pods and verify they are necessary. The command lists all bindings with create pods permission.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary permissions to create pods by editing or deleting the relevant rolebindings and clusterrolebindings."
+    }
+  },
+  {
+    "controlindex": "5.1.5",
+    "controlname": "Ensure that default service accounts are not actively used.",
+    "controldescriptionandrationale": "The default service account has limited permissions but is automatically assigned to pods that don't specify a service account. Actively using the default service account can lead to privilege escalation if its permissions are increased.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get serviceaccount default -o yaml",
+      "description_of_what_the_command_does_and_its_expected_output": "Review the default service account configuration and verify it's not being actively used. The command shows the default service account configuration.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Create dedicated service accounts for each application and specify them in pod specifications."
+    }
+  },
+  {
+    "controlindex": "5.1.6",
+    "controlname": "Ensure that Service Account Tokens are only mounted where necessary",
+    "controldescriptionandrationale": "Service account tokens provide authentication credentials. Mounting them unnecessarily increases the attack surface.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.automountServiceAccountToken}{\"\n\"}{end}'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all pods that automatically mount service account tokens and verify it's necessary. The command lists pods and their automountServiceAccountToken settings.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Set automountServiceAccountToken: false in pod specs where service account tokens aren't needed."
+    }
+  },
+  {
+    "controlindex": "5.1.7",
+    "controlname": "Avoid use of system:masters group",
+    "controldescriptionandrationale": "The system:masters group has unrestricted access to the cluster. Its use should be avoided except for break-glass scenarios.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get clusterrolebindings -o wide | grep 'system:masters'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all clusterrolebindings that grant system:masters privileges. The command lists bindings to the system:masters group.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary bindings to system:masters and use more restrictive roles instead."
+    }
+  },
+  {
+    "controlindex": "5.1.8",
+    "controlname": "Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster",
+    "controldescriptionandrationale": "These permissions allow users to escalate privileges. They should be restricted to only those who absolutely need them.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get clusterroles,roles --all-namespaces -o yaml | grep -E 'bind|impersonate|escalate'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all roles and clusterroles that include bind, impersonate, or escalate permissions. The command searches for these permissions in role definitions.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary bind, impersonate, and escalate permissions from roles and clusterroles."
+    }
+  },
+  {
+    "controlindex": "5.1.9",
+    "controlname": "Minimize access to create persistent volumes",
+    "controldescriptionandrationale": "The ability to create persistent volumes can be used to consume cluster resources or mount sensitive data. Access should be restricted.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get rolebindings,clusterrolebindings --all-namespaces -o wide | grep 'create persistentvolumes'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all bindings that grant permission to create persistent volumes. The command lists bindings with create persistentvolumes permission.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary permissions to create persistent volumes by editing or deleting the relevant bindings."
+    }
+  },
+  {
+    "controlindex": "5.1.10",
+    "controlname": "Minimize access to the proxy sub-resource of nodes",
+    "controldescriptionandrationale": "The proxy sub-resource allows accessing the Kubelet API, which could be used to execute commands on nodes. Access should be restricted.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get clusterroles,roles --all-namespaces -o yaml | grep 'nodes/proxy'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all roles and clusterroles that include access to nodes/proxy. The command searches for this permission in role definitions.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary access to nodes/proxy from roles and clusterroles."
+    }
+  },
+  {
+    "controlindex": "5.1.11",
+    "controlname": "Minimize access to the approval sub-resource of certificatesigningrequests objects",
+    "controldescriptionandrationale": "The ability to approve certificatesigningrequests can be used to create new credentials in the cluster. Access should be restricted.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get clusterroles,roles --all-namespaces -o yaml | grep 'certificatesigningrequests/approval'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all roles and clusterroles that include access to certificatesigningrequests/approval. The command searches for this permission in role definitions.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary access to certificatesigningrequests/approval from roles and clusterroles."
+    }
+  },
+  {
+    "controlindex": "5.1.12",
+    "controlname": "Minimize access to webhook configuration objects",
+    "controldescriptionandrationale": "Webhook configurations control authentication, authorization, and admission control. Unauthorized modifications could compromise cluster security.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get clusterroles,roles --all-namespaces -o yaml | grep -E 'mutatingwebhookconfigurations|validatingwebhookconfigurations'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all roles and clusterroles that include access to webhook configurations. The command searches for these permissions in role definitions.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary access to webhook configurations from roles and clusterroles."
+    }
+  },
+  {
+    "controlindex": "5.1.13",
+    "controlname": "Minimize access to the service account token creation",
+    "controldescriptionandrationale": "The ability to create service account tokens can be used to gain unauthorized access. This permission should be restricted.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get clusterroles,roles --all-namespaces -o yaml | grep 'serviceaccounts/token'",
+      "description_of_what_the_command_does_and_its_expected_output": "Review all roles and clusterroles that include access to serviceaccounts/token. The command searches for this permission in role definitions.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary access to serviceaccounts/token from roles and clusterroles."
+    }
+  },
+  {
+    "controlindex": "5.2.1",
+    "controlname": "Ensure that the cluster has at least one active policy control mechanism in place",
+    "controldescriptionandrationale": "Policy control mechanisms like Pod Security Policies or OPA/Gatekeeper help enforce security standards across the cluster.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get podsecuritypolicies; kubectl get validatingwebhookconfigurations; kubectl get mutatingwebhookconfigurations",
+      "description_of_what_the_command_does_and_its_expected_output": "Check for active policy enforcement mechanisms. The commands check for PodSecurityPolicies and admission webhooks.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Implement at least one policy enforcement mechanism such as Pod Security Admission, OPA/Gatekeeper, or Kyverno."
+    }
+  },
+  {
+    "controlindex": "5.2.2",
+    "controlname": "Minimize the admission of privileged containers",
+    "controldescriptionandrationale": "Privileged containers have access to all Linux capabilities and host devices, increasing the attack surface.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].securityContext.privileged}{\"\n\"}{end}' | grep -v \"false\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods with privileged containers. The command searches for containers with privileged: true.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove privileged: true from pod specs unless absolutely necessary."
+    }
+  },
+  {
+    "controlindex": "5.2.3",
+    "controlname": "Minimize the admission of containers wishing to share the host process ID namespace",
+    "controldescriptionandrationale": "Sharing the host PID namespace allows visibility of processes on the host, potentially leaking information.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.shareProcessNamespace}{\"\n\"}{end}' | grep -v \"false\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods sharing the host PID namespace. The command searches for shareProcessNamespace: true.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Set shareProcessNamespace: false in pod specs unless required."
+    }
+  },
+  {
+    "controlindex": "5.2.4",
+    "controlname": "Minimize the admission of containers wishing to share the host IPC namespace",
+    "controldescriptionandrationale": "Sharing the host IPC namespace allows inter-process communication with host processes, potentially leading to privilege escalation.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.hostIPC}{\"\n\"}{end}' | grep -v \"false\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods sharing the host IPC namespace. The command searches for hostIPC: true.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Set hostIPC: false in pod specs unless required."
+    }
+  },
+  {
+    "controlindex": "5.2.5",
+    "controlname": "Minimize the admission of containers wishing to share the host network namespace",
+    "controldescriptionandrationale": "Sharing the host network namespace gives containers access to host network interfaces, increasing the attack surface.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.hostNetwork}{\"\n\"}{end}' | grep -v \"false\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods sharing the host network namespace. The command searches for hostNetwork: true.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Set hostNetwork: false in pod specs unless required."
+    }
+  },
+  {
+    "controlindex": "5.2.6",
+    "controlname": "Minimize the admission of containers with allowPrivilegeEscalation",
+    "controldescriptionandrationale": "AllowPrivilegeEscalation allows a child process to gain more privileges than its parent, potentially leading to container breakout.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].securityContext.allowPrivilegeEscalation}{\"\n\"}{end}' | grep -v \"false\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods with containers allowing privilege escalation. The command searches for allowPrivilegeEscalation: true.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Set allowPrivilegeEscalation: false in container securityContext unless required."
+    }
+  },
+  {
+    "controlindex": "5.2.7",
+    "controlname": "Minimize the admission of root containers",
+    "controldescriptionandrationale": "Running containers as root increases the risk of container breakout and host system compromise.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].securityContext.runAsNonRoot}{\"\n\"}{end}' | grep -v \"true\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods that might run containers as root. The command searches for containers without runAsNonRoot: true.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Set runAsNonRoot: true in container securityContext and specify a non-root runAsUser."
+    }
+  },
+  {
+    "controlindex": "5.2.8",
+    "controlname": "Minimize the admission of containers with the NET_RAW capability",
+    "controldescriptionandrationale": "The NET_RAW capability allows creating raw sockets, which can be used to bypass network restrictions.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].securityContext.capabilities.add}{\"\n\"}{end}' | grep -i \"NET_RAW\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods with containers that have NET_RAW capability added. The command searches for NET_RAW in added capabilities.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove NET_RAW from capabilities.add in container securityContext unless required."
+    }
+  },
+  {
+    "controlindex": "5.2.9",
+    "controlname": "Minimize the admission of containers with added capabilities",
+    "controldescriptionandrationale": "Adding Linux capabilities beyond the default set increases the attack surface and potential for privilege escalation.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].securityContext.capabilities.add}{\"\n\"}{end}' | grep -v \"null\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods with containers that have additional capabilities. The command searches for non-null capabilities.add.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Remove unnecessary capabilities from capabilities.add in container securityContext."
+    }
+  },
+  {
+    "controlindex": "5.2.10",
+    "controlname": "Minimize the admission of containers with capabilities assigned",
+    "controldescriptionandrationale": "Containers should drop all capabilities not explicitly required for their operation.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].securityContext.capabilities.drop}{\"\n\"}{end}' | grep -v \"ALL\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods with containers that haven't dropped all capabilities. The command searches for containers that don't drop ALL capabilities.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Add capabilities.drop: ['ALL'] to container securityContext and only add back required capabilities."
+    }
+  },
+  {
+    "controlindex": "5.2.11",
+    "controlname": "Minimize the admission of Windows HostProcess Containers",
+    "controldescriptionandrationale": "Windows HostProcess containers run with elevated privileges and direct access to the host, increasing the attack surface.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.securityContext.windowsOptions.hostProcess}{\"\n\"}{end}' | grep -v \"false\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all Windows pods with hostProcess: true. The command searches for hostProcess containers.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Avoid using hostProcess containers unless absolutely necessary for Windows node administration."
+    }
+  },
+  {
+    "controlindex": "5.2.12",
+    "controlname": "Minimize the admission of HostPath volumes",
+    "controldescriptionandrationale": "HostPath volumes allow access to host filesystem, which could be used to modify host system files or access sensitive data.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.volumes[*].hostPath}{\"\n\"}{end}' | grep -v \"null\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods using HostPath volumes. The command searches for non-null hostPath volumes.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Replace HostPath volumes with PersistentVolumeClaims where possible."
+    }
+  },
+  {
+    "controlindex": "5.2.13",
+    "controlname": "Minimize the admission of containers which use HostPorts",
+    "controldescriptionandrationale": "HostPorts can lead to port conflicts and reduce scheduling flexibility. They also expose services on the host network.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].ports[*].hostPort}{\"\n\"}{end}' | grep -v \"null\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods using HostPorts. The command searches for non-null hostPort values.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Use NodePort Services instead of HostPorts where possible."
+    }
+  },
+  {
+    "controlindex": "5.3.1",
+    "controlname": "Ensure that the CNI in use supports Network Policies",
+    "controldescriptionandrationale": "Network Policies allow restricting pod-to-pod communication, which is essential for implementing network segmentation.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods -n kube-system -l k8s-app=cilium -o wide || kubectl get pods -n kube-system -l k8s-app=calico-node -o wide || kubectl get pods -n kube-system -l k8s-app=weave-net -o wide",
+      "description_of_what_the_command_does_and_its_expected_output": "Check for a CNI plugin that supports Network Policies. The command checks for common policy-supporting CNIs.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Deploy a CNI plugin that supports Network Policies, such as Calico, Cilium, or Weave Net."
+    }
+  },
+  {
+    "controlindex": "5.3.2",
+    "controlname": "Ensure that all Namespaces have Network Policies defined",
+    "controldescriptionandrationale": "Network Policies should be defined for all namespaces to restrict traffic to only what's necessary.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get ns -o jsonpath='{range .items[*]}{.metadata.name}{\"\n\"}{end}' | xargs -I {} sh -c 'echo {}; kubectl get netpol -n {}'",
+      "description_of_what_the_command_does_and_its_expected_output": "List all namespaces and their Network Policies. The command shows which namespaces lack Network Policies.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Create appropriate Network Policies for all namespaces, starting with a default-deny policy."
+    }
+  },
+  {
+    "controlindex": "5.4.1",
+    "controlname": "Prefer using secrets as files over secrets as environment variables",
+    "controldescriptionandrationale": "Environment variables may be leaked through logs or inspection tools, while files are more secure and can have tighter permissions.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.containers[*].envFrom}{\"\n\"}{end}' | grep -v \"null\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods using secrets as environment variables. The command searches for non-null envFrom references.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Convert secret environment variables to mounted files where possible."
+    }
+  },
+  {
+    "controlindex": "5.4.2",
+    "controlname": "Consider external secret storage",
+    "controldescriptionandrationale": "Kubernetes secrets are base64 encoded but not encrypted. External secret management systems provide better security features.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.volumes[*].secret}{\"\n\"}{end}' | grep -v \"null\\|\"\"\" | wc -l",
+      "description_of_what_the_command_does_and_its_expected_output": "Count how many pods use Kubernetes secrets. The command helps assess the scope of secret usage.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Evaluate and implement an external secret management solution like HashiCorp Vault or AWS Secrets Manager."
+    }
+  },
+  {
+    "controlindex": "5.5.1",
+    "controlname": "Configure Image Provenance using ImagePolicyWebhook admission controller",
+    "controldescriptionandrationale": "Image provenance controls help ensure only approved, trusted container images are deployed in the cluster.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get validatingwebhookconfigurations,mutatingwebhookconfigurations -o yaml | grep -i 'imagepolicy'",
+      "description_of_what_the_command_does_and_its_expected_output": "Check for active image policy webhooks. The command searches for image policy related webhooks.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Configure the ImagePolicyWebhook admission controller to validate image sources and signatures."
+    }
+  },
+  {
+    "controlindex": "5.6.1",
+    "controlname": "Create administrative boundaries between resources using namespaces",
+    "controldescriptionandrationale": "Namespaces provide logical separation and can be used to implement access control boundaries.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get ns",
+      "description_of_what_the_command_does_and_its_expected_output": "Review the namespace structure. The command lists all namespaces in the cluster.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Organize resources into namespaces based on team, application, or environment boundaries."
+    }
+  },
+  {
+    "controlindex": "5.6.2",
+    "controlname": "Ensure that the economy profile is set to docker/default in your pod definitions",
+    "controldescriptionandrationale": "The economy profile helps optimize resource usage by containers, preventing resource exhaustion.",
+    "severityLevel": "low",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.metadata.annotations.seccomp\\.security\\.alpha\\.kubernetes\\.io/pod}{\"\n\"}{end}' | grep -v \"docker/default\\|\"\"\"",
+      "description_of_what_the_command_does_and_its_expected_output": "List all pods not using the economy profile. The command searches for pods without the economy annotation.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Add seccomp.security.alpha.kubernetes.io/pod: docker/default annotation to pod specs."
+    }
+  },
+  {
+    "controlindex": "5.6.3",
+    "controlname": "Apply Security Context to Your Pods and Containers",
+    "controldescriptionandrationale": "Security contexts define privilege and access control settings for pods and containers.",
+    "severityLevel": "high",
+    "Audit": {
+      "commands": "kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name}{\"\t\"}{.spec.securityContext}{\"\n\"}{end}' | grep -v \"null\\|\"\"\" | wc -l",
+      "description_of_what_the_command_does_and_its_expected_output": "Count how many pods have pod-level security contexts defined. The command helps assess security context usage.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Define appropriate securityContext settings for all pods and containers."
+    }
+  },
+  {
+    "controlindex": "5.6.4",
+    "controlname": "The default namespace should not be used",
+    "controldescriptionandrationale": "The default namespace lacks isolation and should be reserved for cluster components only.",
+    "severityLevel": "medium",
+    "Audit": {
+      "commands": "kubectl get all -n default",
+      "description_of_what_the_command_does_and_its_expected_output": "List all resources in the default namespace. The command shows what's deployed in default.",
+      "validated": false
+    },
+    "remediation": {
+      "commands_to_fix_the_problem": "Move all user workloads to dedicated namespaces and keep default namespace empty."
+    }
+  }
+]
